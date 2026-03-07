@@ -10,7 +10,641 @@
 
 */
 
+
+/* Адаптив мобильная версия 375px light */
+
 .page {
-  min-inline-size: 320px;
-  min-block-size: 100dvb;
+    font-family: var(--font-family);
+    font-variation-settings: var(--text-weight);
+    background-image: repeating-linear-gradient(to right, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px), repeating-linear-gradient(to bottom, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px), linear-gradient(to bottom, #e7e7e7, #1a1a1a);
+    background-color: var(--bg-color);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    overflow: auto;
+}
+
+
+/*Шапка*/
+
+.header {
+    border: solid 2px;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    min-height: auto;
+    max-width: clamp(min(100%, 375px), 50vw, 700px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block-start: 100px;
+    margin-block-end: 100px;
+}
+
+.logo-group {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block-start: 122px;
+    margin-block-end: 120px;
+}
+
+.logo-title {
+    font-family: var(--font-family-accent), 'Regular';
+    font-weight: 400;
+    font-size: clamp(32px, calc(49 / 375 * 100vw), 49px);
+    color: #000000;
+    display: inline-block;
+}
+
+.logo-subtitle {
+    font-family: var(--font-family-accent), 'Regular';
+    font-weight: 400;
+    font-size: clamp(12px, 3.73vw, 14px);
+    color: #000000;
+    display: inline-block;
+    padding-top: 20px;
+    text-transform: uppercase;
+}
+
+
+/*Фрейм с карточками*/
+
+.frame {
+    background-color: #FFFFFF;
+}
+
+.post-list {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    flex-wrap: wrap;
+    text-decoration: none;
+    gap: 20px;
+}
+
+.post-item {
+    flex-grow: 1;
+    box-sizing: border-box;
+    border: #000000 2px solid;
+    max-width: clamp(min(100%, 375px), 50vw, 700px);
+    margin-bottom: 30px;
+}
+
+.post_title {
+    font-family: var(--font-family);
+    font-weight: 715;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.card {
+    width: 100%;
+}
+
+.card__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.sepia__filter {
+    filter: sepia(50%);
+    color: darkred;
+    background-color: #1a1a1a;
+}
+
+.contrast__filter {
+    filter: saturate(390%);
+}
+
+.multi__filter {
+    filter: contrast(100%) drop-shadow(10px 10px 10px red) hue-rotate(0.6turn);
+}
+
+.invert__filter {
+    filter: invert(80%);
+}
+
+.grayscale__filter {
+    filter: grayscale(80%) sepia(0.5);
+}
+
+.blur__filter {
+    filter: blur(6px);
+}
+
+.opacity__filter {
+    filter: brightness(3);
+    opacity: 0.2;
+}
+
+.post-text {
+    font-family: var(--font-family), "Regular";
+    font-weight: 410;
+    font-size: 18px;
+    line-height: 21px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    opacity: 1;
+    gap: 20px;
+    padding: 25px;
+    margin-block: 0 27px;
+}
+
+p:last-of-type {
+    font-family: var(--font-family), "Regular";
+    font-weight: 410;
+    font-size: 18px;
+    line-height: 21px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    opacity: 1;
+    padding-left: 25px;
+}
+
+
+/*Кнопка Сохранить на память*/
+
+.button__save {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    border: 2px solid currentColor;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    max-width: 306px;
+    min-height: 84px;
+    margin: 0 auto;
+    padding-top: 15px;
+    margin-top: 25px;
+}
+
+.button__save::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease-in-out;
+    z-index: 1;
+}
+
+.button__save:hover::before {
+    transform: scaleX(1);
+    transition: transform 0.5s ease-in-out;
+}
+
+.button__icon,
+.button__text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    mix-blend-mode: difference;
+    color: #FFFFFF;
+    pointer-events: none;
+}
+
+#diskette__icon path {
+    fill: #FFFFFF !important;
+}
+
+.card__icon-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 25px;
+    margin-right: 25px;
+    margin-bottom: 30px;
+}
+
+.card__image-сontainer {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/*Кнопка Like*/
+
+.card__like-button {
+    width: 130px;
+    height: 38px;
+    background-color: #FFFFFF;
+    border: 2px solid var(--accent-color);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+}
+
+.card__like-button:focus {
+    outline: none;
+    box-shadow: 2px 2px 0 var(--accent-color);
+    transition: box-shadow 0.3s ease;
+}
+
+.card__like-button:active {
+    box-shadow: 1px 1px 0 var(--accent-color);
+}
+
+.card__like-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease-in-out;
+    z-index: 1;
+}
+
+.card__like-button:hover::before {
+    transform: scaleX(1);
+    transition: transform 0.5s ease-in-out;
+}
+
+.button__text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    mix-blend-mode: difference;
+    background-color: #000000;
+    color: #FFFFFF;
+    pointer-events: none;
+}
+
+dialog {
+    border: 2px solid #000000;
+    padding: 20px;
+    min-height: 191px;
+    max-width: 341px;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(2px);
+}
+
+.dialog__content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 20px;
+    max-width: 261px;
+    min-height: 63px;
+}
+
+dialog[open] h2 dialog[open] .button {
+    grid-column: 1/-1;
+}
+
+dialog[open] .button__icon {
+    grid-column: 1;
+}
+
+dialog[open] .button__text {
+    grid-column: 2;
+}
+
+
+/*Кнопка OK*/
+
+.button__body {
+    appearance: none;
+    max-width: 261px;
+    min-height: 38px;
+    background-color: #FFFFFF;
+    border: 2px solid #000000;
+    padding: 9px 17px 9px 17px;
+    gap: 10px;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.button__body:focus {
+    outline: none;
+    box-shadow: 2px 2px 0 var(--accent-color);
+    transition: box-shadow 0.3s ease;
+}
+
+.button__body:active {
+    box-shadow: 1px 1px 0 var(--accent-color);
+}
+
+.button__body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease-in-out;
+    z-index: 1;
+}
+
+.button__body:hover::before {
+    transform: scaleX(1);
+    transition: transform 0.5s ease-in-out;
+}
+
+.dialog .button {
+    font-family: var(--font-family-accent);
+    border: 2px solid #000000;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: transparent;
+}
+
+.dialog .button:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.dialog .button:active {
+    transform: translateY(2px);
+}
+
+.diskette__icon {
+    flex-shrink: 0;
+}
+
+.button__text {
+    font-family: var(--font-family-accent), "Regular";
+    font-weight: var(--title-button-weight);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    mix-blend-mode: difference;
+    color: #FFFFFF;
+    pointer-events: none;
+}
+
+.dialog__title {
+    font-family: var(--font-family-accent), "Regular";
+    font-weight: var(--title-button-weight);
+    font-size: 14px;
+    min-height: 63px;
+    line-height: 150%;
+}
+
+.label {
+    position: absolute;
+    z-index: 2;
+    opacity: 0.5;
+    mix-blend-mode: hard-light;
+}
+
+.label-HTML {
+    font-family: var(--font-family-accent), "Regular";
+    font-weight: var(--title-button-weight);
+    color: #000000;
+    text-shadow: 1px 1px 0 var(--stroke-color), -1px 1px 0 var(--stroke-color), 1px -1px 0 var(--stroke-color), -1px -1px 0 var(--stroke-color);
+    -webkit-text-stroke: 1px var(--stroke-color);
+    margin-left: 20px;
+    margin-top: 25px;
+    line-height: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+@supports (-webkit-text-stroke: 1px #FFFFFF) {
+    .label-HTML {
+        -webkit-text-stroke: 1px var(--stroke-color);
+    }
+}
+
+
+/*Анимация сердце*/
+
+.sparks {
+    opacity: 0;
+}
+
+.contour {
+    transition: 0.1s linear 0s;
+}
+
+.contour:active {
+    fill: none;
+}
+
+.main-body {
+    transition: 0.1s linear 0s;
+}
+
+.main-body:hover {
+    fill: var(--accent-color);
+    transition: 0.1s linear 0.05s;
+}
+
+.main-body:active {
+    fill: var(--main-body-color);
+    transition: 0.1s linear 0.05s;
+}
+
+.core {
+    transition: 0.3s linear 0.03s;
+}
+
+.core:hover {
+    fill: var(--core-color);
+    transition: 0.3s linear 0s;
+}
+
+.core:active {
+    fill: var(--animation-fill-color);
+    transition: 0.3s linear 0s;
+}
+
+.like-icon {
+    transform-origin: center;
+}
+
+.like-icon:active {
+    animation: heart 0.3s ease-in 0.1s 1 forwards;
+}
+
+.like-icon:hover .core {
+    fill: #000;
+    transition-delay: 0s;
+    transition-duration: 0.3s;
+}
+
+.like-icon:active .core {
+    animation: contourFill 0.2s forwards;
+}
+
+.like-icon:hover .main-body {
+    fill: #000;
+    transition-delay: 0.05s;
+    transition-duration: 0.3s;
+}
+
+.like-icon:active .main-body {
+    animation: contourFill 0.2s forwards;
+}
+
+.like-icon:active .contour {
+    animation: contourFill 0.2s forwards;
+}
+
+.like-icon:active .sparks {
+    fill: var(--animation-fill-color);
+    transform-origin: center;
+    animation: sparks 0.4s ease-out forwards;
+}
+
+.is-liked .heart {
+    transform-origin: center;
+    animation: pulse 0.3s ease-in 0.1s 1
+}
+
+.is-liked .like-icon .contour {
+    animation: contourFill 0.3s ease-in-out 0.3s forwards;
+}
+
+.like-icon.is-liked .sparks {
+    animation: sparks;
+    animation-delay: 0.3s;
+    animation-timing-function: ease-in;
+    animation-duration: 0.3s;
+}
+
+.like-icon.is-liked .core {
+    fill: #FF0000;
+    transition-delay: 0s;
+    transition-duration: 0.3s;
+}
+
+.like-icon.is-liked .main-body {
+    fill: #FF0000;
+    transition-delay: 0.05s;
+    transition-duration: 0.3s;
+}
+
+.like-icon.is-liked .contour {
+    fill: #FF0000;
+    transition-delay: 0.06s;
+    transition-duration: 0.3s;
+}
+
+.is-liked .heart {
+    transform-origin: center;
+    animation: heart;
+    animation-delay: 0.1s;
+    animation-direction: alternate;
+    animation-timing-function: ease-in;
+    animation-duration: 0.3s;
+}
+
+.button {
+    position: relative;
+    border: 2px solid var(--main-color, #000);
+    padding: 0;
+    background-color: var(--bg-color, #FFFFFF);
+    cursor: pointer;
+}
+
+.button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--main-color, #000);
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left center;
+}
+
+.button:hover::after {
+    transform: scale(1);
+}
+
+.button:focus {
+    outline: none;
+}
+
+.button:focus-visible {
+    box-shadow: 2px 2px 0 0 var(--main-color, #000);
+    transition-duration: 0.3s;
+}
+
+
+/*Адаптив 1440px*/
+
+@media (width >=1440px) {
+    .header {
+        width: clamp(320px, 48.6vw, 700px);
+        min-height: 368px;
+    }
+    .logo-title {
+        font-size: clamp(32px, 4.51vw, 65px);
+        line-height: 100%;
+    }
+    .logo-subtitle {
+        font-size: clamp(1.125rem, 5.8vw, 1.5rem);
+        text-transform: uppercase;
+        margin-top: 10px;
+    }
+    .post-item {
+        width: clamp(320px, 48.6vw, 700px);
+    }
+    .card {
+        max-width: clamp(320px, 48.6vw, 700px);
+    }
+    .button__save {
+        max-width: 335px;
+        min-height: 55px;
+        flex-direction: row;
+    }
+    .dialog {
+        max-width: 353px;
+    }
+    .post-list {
+        gap: 15px;
+        width: 100%;
+    }
 }

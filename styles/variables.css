@@ -1,1 +1,22 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+--font-family: 'Inter-Variable';
+--font-family-accent: 'PressStart2P-Regular', sans-serif;
+--card-title-weight: 715;
+--text-weight: 410;
+--title-button-weight: 400;
+--background-image: url(../images/background.png);
+--bg-color: #FFFFFF;
+--container-width: clamp(23.4375rem, 5.23rem + 77.46vw, 75rem);
+--stroke-color: #FFFFFF;
+--accent-color: #000000;
+--core-color: #FFFFFF;
+--contour-color: #000000;
+--main-body-color: #FF0000;
+--sparks-color: #FF0000;
+--animation-fill-color: #FF0000;
+--transition-duration: 0.3s;
+--transition-time: ease;
+--main-color: #000;
+
+}
