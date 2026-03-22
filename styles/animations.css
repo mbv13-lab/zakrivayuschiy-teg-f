@@ -24,7 +24,7 @@ transform: scale(1);
 }
 }
 
-@keyframes contourFill {
+@keyframes contour {
 from {fill: transparent;}
 to {fill: var(--animation-fill-color);}
 }
@@ -35,7 +35,7 @@ to {fill: var(--animation-fill-color);}
 100% {opacity:0; transform: scale(2);}
 }
 
-@keyframes pusle {
+@keyframes pulse {
 0% {transform: scale(1);}
 50% {transform: scale(1.2);}
 100% {transform: scale(1)}
