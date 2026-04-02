@@ -18,7 +18,7 @@
 
 .page {
     font-family: var(--font-family);
-    font-variation-settings: var(--text-weight, 400);
+    font-variation-settings: 'wght' var(--text-weight, 400);
     background-image: repeating-linear-gradient(to right, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px), repeating-linear-gradient(to bottom, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px), linear-gradient(to bottom, #e7e7e7, #1a1a1a);
     background-attachment: fixed;
     background-size: cover;
@@ -53,7 +53,7 @@
 }
 
 .header__title {
-    font-family: var(--font-family-accent), 'Regular';
+    font-family: var(--font-family-accent), fantasy;
     font-weight: 400;
     font-size: clamp(32px, calc(49 / 375 * 100vw), 49px);
     color: #000000;
@@ -62,7 +62,7 @@
 }
 
 .header__subtitle {
-    font-family: var(--font-family-accent), 'Regular';
+    font-family: var(--font-family-accent), fantasy;
     font-weight: 400;
     font-size: clamp(0.875rem, 2.7692cqi + 0.226rem, 1.4375rem);
     color: #000000;
@@ -97,7 +97,7 @@
 }
 
 .post_title {
-    font-family: var(--font-family);
+    font-family: var(--font-family), sans-serif;
     font-size: 18px;
     padding-left: 10px;
     padding-top: 4px;
@@ -116,6 +116,7 @@
     height: 100%;
     overflow: hidden;
     max-height: 696px;
+    aspect-ratio: 1 / 1;
 }
 
 .card__image-сontainer {
@@ -172,7 +173,7 @@ img {
 }
 
 p {
-    font-family: var(--font-family), "Regular";
+    font-family: var(--font-family), sans-serif;
     font-weight: 410;
     font-size: 18px;
     line-height: 21px;
@@ -188,7 +189,7 @@ p {
     position: absolute;
     margin-top: 25px;
     right: 25px;
-    font-family: var(--font-family-accent), "Regular";
+    font-family: var(--font-family-accent), fantasy;
     font-weight: var(--title-button-weight);
     color: #000000;
     font-size: 14px;
@@ -216,71 +217,73 @@ p {
 
 /*Кнопка Сохранить на память*/
 
-.button {
-    display: flex;
-    cursor: pointer;
-    gap: 12px;
-    position: relative;
-    border: 2px solid var(--accent-color);
-    padding: 9px 36px;
-    background-color: var(--bg-color, #FFFFFF);
-    transition: box-shadow 0.3s ease;
-    color: #fff;
+.button,
+.button__body {
+display: flex;
+justify-content: center;
+cursor: pointer;
+border: 2px solid var(--accent-color);
+background-color: var(--bg-color, #FFFFFF);
+transition: box-shadow 0.3s ease;
+position: relative;
+align-items: center;
+width: 100%;
+transform: scaleX(1);
 }
 
-.button:focus-visible {
+
+.button:focus-visible,
+.button__save:focus,
+.card__like-button:focus {
     box-shadow: 2px 2px 0 0 var(--main-color, #000);
-    transition-duration: 0.3s;
 }
 
-.button:hover::after {
-    transform: scale(1);
+.button:hover::after,
+.button__save:hover::before,
+.card__like-button::before,
+.button__body:hover::before {
+    transform: scaleX(1);
 }
 
-.button:focus {
+.button:focus,
+.button__body:focus {
     outline: none;
+    box-shadow: 2px 2px 0 var(--accent-color);
+    transition: box-shadow 0.3s ease;
 }
 
 .button__save {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    border: 2px solid currentColor;
-    cursor: pointer;
-    transition: 0.3s;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    max-width: 306px;
-    min-height: 84px;
-    margin: 25px auto 100px;
-    padding: 16px 1px 15px 0px;
-}
+display: flex; 
+flex-direction: column; 
+gap: 10px; 
+align-items: center; 
+border: 2px solid currentColor; 
+cursor: pointer; 
+width: 100%; 
+position: relative; 
+overflow: hidden; 
+max-width: 306px; 
+min-height: 84px; 
+margin: 52px auto 100px; 
+padding: 16px 1px 15px 0px; }
 
-.button__save::before {
+
+.button__save::before,
+.button__body::before {
     content: "";
     position: absolute;
-    transform: scaleX(1);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000000;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s ease-in-out;
-    z-index: 1;
+    transform: scaleX(1); 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: #000000; 
+    transform: scaleX(0); 
+    transform-origin: left; 
+    transition: transform 0.5s ease-in-out; 
+    z-index: 1; 
 }
 
-.button__save:hover::before {
-    transform: scaleX(1);
-    transition: transform 0.5s ease-in-out;
-}
-
-.button__save:focus {
-    box-shadow: 2px 2px 0 0 var(--main-color, #000);
-}
 
 .button__icon,
 .button__text {
@@ -291,7 +294,7 @@ p {
     justify-content: center;
     position: relative;
     z-index: 2;
-    font-family: var(--font-family-accent), "Regular";
+    font-family: var(--font-family-accent), fantasy;
     font-weight: var(--title-button-weight);
     pointer-events: none;
 }
@@ -302,7 +305,7 @@ svg.button__icon {
 }
 
 #diskette__icon path {
-    fill: #FFFFFF !important;
+    fill: #FFFFFF 
 }
 
 
@@ -332,29 +335,23 @@ svg.like-icon {
 .card__like-button {
     inline-size: 130px;
     block-size: 38px;
-    justify-content: center;
-}
+    justify-content: center; 
 
-.card__like-button:focus {
-    box-shadow: 2px 2px 0 0 var(--main-color, #000);
-}
-
-.card__like-button::before {
-    transform: scaleX(1);
 }
 
 .card__like-button::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 101%;
-    background-color: var(--accent-color);
-    transform-origin: bottom left;
-    transition: transform .5s ease-in-out;
-    transform: scaleX(0);
+    content: ''; 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 101%; 
+    background-color: var(--accent-color); 
+    transform-origin: bottom left; 
+    transition: transform .5s ease-in-out; 
+    transform: scaleX(0);  
 }
+
 
 dialog {
     border: 2px solid #000000;
@@ -377,52 +374,21 @@ dialog[open] {
 /*Кнопка OK*/
 
 .button__body {
-    appearance: none;
-    max-width: 261px;
-    width: 100%;
-    background-color: #FFFFFF;
-    border: 2px solid #000000;
-    padding: 9px 17px 9px 17px;
-    gap: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 0.3s;
-    position: relative;
-    overflow: hidden;
+appearance: none; 
+max-width: 261px; 
+padding: 9px 17px 9px 17px; 
+gap: 10px; 
+overflow: hidden; 
 }
 
-.button__body:focus {
-    outline: none;
-    box-shadow: 2px 2px 0 var(--accent-color);
-    transition: box-shadow 0.3s ease;
-}
 
 .button__body:active {
     box-shadow: 1px 1px 0 var(--accent-color);
 }
 
-.button__body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000000;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s ease-in-out;
-    z-index: 1;
-}
-
-.button__body:hover::before {
-    transform: scaleX(1);
-}
 
 .dialog .button {
-    font-family: var(--font-family-accent);
+    font-family: var(--font-family-accent), fantasy;
     border: 2px solid #000000;
     font-size: 14px;
     cursor: pointer;
@@ -451,14 +417,14 @@ dialog[open] {
     flex-shrink: 0;
 }
 
-svg.button__icon.dialog-icon {
+.button__icon.dialog-icon {
     width: 39px;
     height: 39px;
     color: #000;
 }
 
 .dialog__title {
-    font-family: var(--font-family-accent), "Regular";
+    font-family: var(--font-family-accent), fantasy;
     font-weight: var(--title-button-weight);
     font-size: 14px;
     line-height: 150%;
@@ -479,17 +445,9 @@ svg.button__icon.dialog-icon {
     transition: 0.1s linear 0s;
 }
 
-.contour:active {
-    fill: none;
-}
-
 .main-body {
-    transition: 0.1s linear 0s;
-}
-
-.main-body:hover {
-    fill: var(--accent-color);
-    transition: 0.1s linear 0.05s;
+    transition: 0.3s linear 0s;
+    fill: transparent;
 }
 
 .main-body:active {
@@ -499,24 +457,16 @@ svg.button__icon.dialog-icon {
 
 .core {
     transition: 0.3s linear 0.03s;
+    fill: transparent;
 }
 
-.core:hover {
-    fill: var(--core-color);
-    transition: 0.3s linear 0s;
-}
-
-.core:active {
+.like-icon:active .core {
     fill: var(--animation-fill-color);
     transition: 0.3s linear 0s;
 }
 
 .like-icon {
     transform-origin: center;
-}
-
-.like-icon:active {
-    animation: fadeIn 0.3s ease-in 0.1s 1 forwards;
 }
 
 .like-icon:hover .core {
@@ -526,11 +476,13 @@ svg.button__icon.dialog-icon {
 }
 
 .like-icon:active .core {
-    animation: slideInFromLeft 0.3s forwards 0s;
+    fill: var(--main-body-color);
+    transition: fill 0.3s linear;
 }
 
 .like-icon .main-body {
     fill: transparent;
+    transition: fill 0.3s linear;
 }
 
 .like-icon:hover .main-body {
@@ -539,7 +491,8 @@ svg.button__icon.dialog-icon {
 }
 
 .like-icon:active .main-body {
-    animation: slideInFromLeft 0.2s forwards;
+    fill: var(--main-body-color);
+    transition: fill 0.3s 0.05s linear;
 }
 
 .like-icon.is-liked .main-body {
@@ -548,19 +501,15 @@ svg.button__icon.dialog-icon {
     transition-duration: 0.3s;
 }
 
-.like-icon:active .sparks {
-    fill: none;
-    transform-origin: center;
-    animation: changeOpacity 0.4s ease-out forwards;
-}
-
 .like-icon.is-liked .contour {
     fill: #FF0000;
-    animation: slideInFromLeft 0.3s ease-in-out 0.06s forwards;
+    transition: fill 0.3s 0.06s linear;
 }
 
 .like-icon.is-liked .sparks {
-    animation: changeOpacity 0.3s ease-in 0.3s alternate;
+    animation: sparks 0.3s ease-in 0.3s;
+    animation-direction: normal;
+  transform-origin: center;
 }
 
 .like-icon.is-liked .core {
@@ -570,33 +519,40 @@ svg.button__icon.dialog-icon {
 }
 
 .is-liked .heart {
-    transform-origin: center;
-    animation: fadeIn 0.3s ease-in 0.1s alternate;
+  animation: heart 0.3s 0.1s ease-in;
+  animation-direction: normal;
+  transform-origin: center;
 }
-
 
 /*Адаптив 1440px*/
 
 @media (width >=1440px) {
+
     .page {
         margin-bottom: 20px;
     }
+
     .header__title {
         font-size: clamp(3.0625rem, 1.9087rem + 4.9231cqi, 4.0625rem);
     }
+
     .header__subtitle {
         text-transform: uppercase;
         margin-top: 10px;
     }
+
     .post-item {
         width: clamp(320px, 48.6vw, 700px);
     }
+
     .post-text {
         padding: 20px 25px 30px 25px;
     }
+
     .card {
         max-width: clamp(320px, 48.6vw, 700px);
     }
+
     .button__save {
         max-width: 335px;
         min-height: 55px;
@@ -604,12 +560,15 @@ svg.button__icon.dialog-icon {
         margin: 65px auto 100px;
         padding: 10px;
     }
+
     .dialog {
         max-width: 353px;
     }
+
     .button__body {
         max-width: 293px;
     }
+    
     .section_button {
         margin-bottom: 0px;
         padding-bottom: 40px;

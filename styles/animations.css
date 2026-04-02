@@ -11,35 +11,32 @@
 */
 
 
+@keyframes heart {
+  0% {
+    transform: scale(1);
+  }
 
-@keyframes fadeIn {
-from {
-transform: scale(1);
-}
-to {
-transform: scale(1);
-}
-}
+  50% {
+    transform: scale(1.25);
+  }
 
-@keyframes slideInFromLeft {
-from {
-    fill: transparent;
-}
-to {
-    fill: var(--animation-fill-color);}
+  100% {
+    transform: scale(1);
+  }
 }
 
-@keyframes changeOpacity {
-  from {
+
+@keyframes sparks {
+  0% {
     opacity: 0;
   }
-  to {
+
+  50% {
     opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
 
-@keyframes pulse {
-0% {transform: scale(1);}
-50% {transform: scale(1.2);}
-100% {transform: scale(1)}
-}
