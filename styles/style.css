@@ -26,7 +26,6 @@
     min-block-size: 100dvb;
 }
 
-
 /*Шапка*/
 
 .header {
@@ -217,26 +216,18 @@ p {
 
 /*Кнопка Сохранить на память*/
 
-.button,
-.button__body {
-display: flex;
-justify-content: center;
-cursor: pointer;
-border: 2px solid var(--accent-color);
-background-color: var(--bg-color, #FFFFFF);
-transition: box-shadow 0.3s ease;
-position: relative;
-align-items: center;
-width: 100%;
-transform: scaleX(1);
-}
-
-
-.button:focus-visible,
-.button__save:focus,
-.card__like-button:focus {
+.button {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid var(--accent-color);
+    transition: box-shadow 0.3s ease;
+    position: relative;
+    align-items: center;
+    width: 100%;
     box-shadow: 2px 2px 0 0 var(--main-color, #000);
 }
+
 
 .button:hover::after,
 .button__save:hover::before,
@@ -245,47 +236,33 @@ transform: scaleX(1);
     transform: scaleX(1);
 }
 
-.button:focus,
-.button__body:focus {
-    outline: none;
-    box-shadow: 2px 2px 0 var(--accent-color);
-    transition: box-shadow 0.3s ease;
-}
 
 .button__save {
-display: flex; 
-flex-direction: column; 
-gap: 10px; 
-align-items: center; 
-border: 2px solid currentColor; 
-cursor: pointer; 
-width: 100%; 
-position: relative; 
-overflow: hidden; 
-max-width: 306px; 
-min-height: 84px; 
-margin: 52px auto 100px; 
-padding: 16px 1px 15px 0px; }
+    flex-direction: column; 
+    gap: 10px; 
+    max-width: 306px; 
+    min-height: 84px; 
+    margin: 52px auto 100px; 
+    padding: 16px 1px 15px 0px; 
+}
 
 
 .button__save::before,
-.button__body::before {
-    content: "";
-    position: absolute;
-    transform: scaleX(1); 
-    top: 0; 
+.button__body::before,
+.card__like-button::after {
+    content: ''; 
+    position: absolute; 
+    bottom: 0; 
     left: 0; 
     width: 100%; 
-    height: 100%; 
-    background-color: #000000; 
-    transform: scaleX(0); 
-    transform-origin: left; 
-    transition: transform 0.5s ease-in-out; 
-    z-index: 1; 
-}
+    height: 101%; 
+    background-color: var(--accent-color); 
+    transform-origin: bottom left; 
+    transition: transform .5s ease-in-out; 
+    transform: scaleX(0);  
+} 
 
 
-.button__icon,
 .button__text {
     mix-blend-mode: difference;
     color: #FFFFFF;
@@ -302,10 +279,10 @@ padding: 16px 1px 15px 0px; }
 svg.button__icon {
     width: 28px;
     height: 28px;
-}
-
-#diskette__icon path {
-    fill: #FFFFFF 
+    color: #ffffff; 
+    mix-blend-mode: difference;
+    position: relative;
+    z-index: 2;
 }
 
 
@@ -339,20 +316,6 @@ svg.like-icon {
 
 }
 
-.card__like-button::after {
-    content: ''; 
-    position: absolute; 
-    bottom: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 101%; 
-    background-color: var(--accent-color); 
-    transform-origin: bottom left; 
-    transition: transform .5s ease-in-out; 
-    transform: scaleX(0);  
-}
-
-
 dialog {
     border: 2px solid #000000;
     padding: 30px;
@@ -374,18 +337,12 @@ dialog[open] {
 /*Кнопка OK*/
 
 .button__body {
-appearance: none; 
-max-width: 261px; 
-padding: 9px 17px 9px 17px; 
-gap: 10px; 
-overflow: hidden; 
+    appearance: none; 
+    max-width: 261px; 
+    padding: 9px 17px 9px 17px; 
+    gap: 10px; 
+    overflow: hidden; 
 }
-
-
-.button__body:active {
-    box-shadow: 1px 1px 0 var(--accent-color);
-}
-
 
 .dialog .button {
     font-family: var(--font-family-accent), fantasy;
@@ -394,15 +351,6 @@ overflow: hidden;
     cursor: pointer;
     text-transform: uppercase;
     background-color: transparent;
-}
-
-.dialog .button:hover {
-    background-color: #000000;
-    color: #FFFFFF;
-}
-
-.dialog .button:active {
-    transform: translateY(2px);
 }
 
 .dialog-container {
@@ -420,7 +368,7 @@ overflow: hidden;
 .button__icon.dialog-icon {
     width: 39px;
     height: 39px;
-    color: #000;
+
 }
 
 .dialog__title {
@@ -448,11 +396,6 @@ overflow: hidden;
 .main-body {
     transition: 0.3s linear 0s;
     fill: transparent;
-}
-
-.main-body:active {
-    fill: var(--main-body-color);
-    transition: 0.1s linear 0.05s;
 }
 
 .core {
@@ -527,7 +470,6 @@ overflow: hidden;
 /*Адаптив 1440px*/
 
 @media (width >=1440px) {
-
     .page {
         margin-bottom: 20px;
     }
